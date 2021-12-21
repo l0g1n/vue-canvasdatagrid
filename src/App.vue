@@ -1,19 +1,30 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="test">{{ btnName }}</button>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  data() {
+    return {
+      btnName: "canvas-datagrid",
+    };
+  },
+  methods: {
+    test() {
+      if (this.btnName == "canvas-datagrid") {
+        this.$router.push({ path: "/cv" });
+        this.btnName = "    back    ";
+      } else {
+        this.$router.push({ path: "/" });
+        this.btnName = "canvas-datagrid";
+      }
+    },
+  },
+};
 </script>
 
 <style>
